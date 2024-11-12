@@ -11,23 +11,23 @@ library(sf)
 library(raster)
 library(terra)
 
-# # load data
-# ind_file <- commandArgs(trailingOnly = TRUE)
-# print(ind_file)
-# 
-# load(ind_file)
-# 
-# t(paste0("Data loaded at ", Sys.time()))
+# load data
+ind_file <- commandArgs(trailingOnly = TRUE)
+print(ind_file)
 
-# test driving smaller subset of data
-load("Final/Model_Fit_Results/Ben_rr.Rda")
-individual_gps <- read.csv("Final/Bobcat_Individuals/range_resident/ben.csv")
-individual_gps <- individual_gps[1:50,]
-individual <- as.telemetry(individual_gps)
-individual$identity <- individual_gps$individual.identifier
-slot(individual, "info")$identity <- individual_gps$individual.identifier[1]
-uere(individual) <- 7
-name <- individual$identity[1]
+load(ind_file)
+
+t(paste0("Data loaded at ", Sys.time()))
+
+# # test driving smaller subset of data
+# load("Final/Model_Fit_Results/Ben_rr.Rda")
+# individual_gps <- read.csv("Final/Bobcat_Individuals/range_resident/ben.csv")
+# individual_gps <- individual_gps[1:50,]
+# individual <- as.telemetry(individual_gps)
+# individual$identity <- individual_gps$individual.identifier
+# slot(individual, "info")$identity <- individual_gps$individual.identifier[1]
+# uere(individual) <- 7
+# name <- individual$identity[1]
 
 # import land cover data
 nlcd_raster <- rast("Final/NLCD_raster.tif")

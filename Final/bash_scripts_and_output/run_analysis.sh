@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=test         # name of the job (make it short!)
+#SBATCH --job-name=full         # name of the job (make it short!)
 #SBATCH --partition=standard           # partition to be used (standard OR windfall)
 #SBATCH --account=jmalston          # hpc group name! (always jmalston)
 #SBATCH --time=24:00:00            # walltime (up to 10-00:00:00(240:00:00))
@@ -11,9 +11,9 @@
 
 ml R gdal/3.8.5
 
-cd /home/u15/mmercer3/proj/habitat_analysis   # where executable and data is located
+cd /home/u15/mmercer3/proj/habitat_analysis_class   # where executable and data is located
 
-list=(/home/u15/mmercer3/proj/habitat_analysis/Final/Bobcat_Individuals/range_resident/*.csv)
+list=(/home/u15/mmercer3/proj/habitat_analysis_class/Final/Bobcat_Individuals/range_resident/*.csv)
 
 date
 echo "Initiating script"
