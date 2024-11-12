@@ -11,26 +11,26 @@ library(sf)
 library(raster)
 library(terra)
 
-# load data
-ind_file <- commandArgs(trailingOnly = TRUE)
-print(ind_file)
+# # load data
+# ind_file <- commandArgs(trailingOnly = TRUE)
+# print(ind_file)
+# 
+# load(ind_file)
+# 
+# t(paste0("Data loaded at ", Sys.time()))
 
-load(ind_file)
-
-t(paste0("Data loaded at ", Sys.time()))
-
-# # test driving smaller subset of data
-# load("Final/Model_Fit_Results/Ben_rr.Rda")
-# individual_gps <- read.csv("Final/Bobcat_Individuals/range_resident/ben.csv")
-# individual_gps <- individual_gps[1:50,]
-# individual <- as.telemetry(individual_gps)
-# individual$identity <- individual_gps$individual.identifier
-# slot(individual, "info")$identity <- individual_gps$individual.identifier[1]
-# uere(individual) <- 7
-# name <- individual$identity[1]
+# test driving smaller subset of data
+load("Final/Model_Fit_Results/Ben_rr.Rda")
+individual_gps <- read.csv("Final/Bobcat_Individuals/range_resident/ben.csv")
+individual_gps <- individual_gps[1:50,]
+individual <- as.telemetry(individual_gps)
+individual$identity <- individual_gps$individual.identifier
+slot(individual, "info")$identity <- individual_gps$individual.identifier[1]
+uere(individual) <- 7
+name <- individual$identity[1]
 
 # import land cover data
-nlcd_raster <- rast("Final/nlcd_2021_land_cover_l48_20230630/nlcd_2021_land_cover_l48_20230630.img")
+nlcd_raster <- rast("Final/NLCD_raster.tif")
 nlcd_crs <- crs(nlcd_raster)
 nlcd_res <- res(nlcd_raster)
 
@@ -50,12 +50,6 @@ individual_akde <- akde(individual, fits)
 # home_range <- st_transform(home_range_sf, crs(nlcd_crs))
 # plot(home_range)
 
-# crop nlcd to match roads
-extent <- ext(roads)
-cropped_nlcd <- crop(nlcd_raster, extent)
-plot(cropped_nlcd)
-plot(roads, add = TRUE)
-
 # turn major roads into a raster with same properties as land cover data
 # Create a raster template
 distance <- rast(extent, 
@@ -64,13 +58,13 @@ distance <- rast(extent,
 roads_vector <- vect(roads)
 roads_raster <- rasterize(roads_vector, distance, field = 1, background = 0)
 plot(roads_raster)
-distance <- terra::distance(cropped_nlcd, roads_vector)
+distance <- terra::distance(nlcd_raster, roads_vector)
 # this spits out a raster of all 0s. Why???
 plot(distance)
 plot(roads_vector, add = TRUE)
 sum(table(values(distance))) 
-sum(table(values(cropped_nlcd))) 
-test <- (c(distance, cropped_nlcd)) # if this worked, it means extent, resolution, and number of cells matches
+sum(table(values(nlcd_raster))) 
+test <- (c(distance, nlcd_raster)) # if this worked, it means extent, resolution, and number of cells matches
 
 # # get land cover data into same coordinate reference system as telemetry data!
 # crs <- crs(individual_gps) # this doesn't work (NA)
@@ -80,19 +74,19 @@ test <- (c(distance, cropped_nlcd)) # if this worked, it means extent, resolutio
 shrub_matrix <- matrix(c(11,21,22,23,24,31,41,42,43,52,71,82,90,95,
                          0,0,0,0,0,0,0,0,0,1,1,0,0,0),
                        ncol = 2)
-shrub <- classify(cropped_nlcd, shrub_matrix)
+shrub <- classify(nlcd_raster, shrub_matrix)
 plot(shrub)
 
 low_matrix <- matrix(c(11,21,22,23,24,31,41,42,43,52,71,82,90,95,
                        0,1,1,0,0,0,0,0,0,0,0,0,0,0),
                      ncol = 2)
-low <- classify(cropped_nlcd, low_matrix)
+low <- classify(nlcd_raster, low_matrix)
 plot(low)
 
 high_matrix <- matrix(c(11,21,22,23,24,31,41,42,43,52,71,82,90,95,
                         0,0,0,1,1,0,0,0,0,0,0,0,0,0),
                       ncol = 2)
-high <- classify(cropped_nlcd, high_matrix)
+high <- classify(nlcd_raster, high_matrix)
 plot(high)
 
 # make rasters
