@@ -13,7 +13,7 @@ ml R gdal/3.8.5
 
 cd /home/u15/mmercer3/proj/habitat_analysis_class   # where executable and data is located
 
-list=(/home/u15/mmercer3/proj/habitat_analysis_class/Final/Model_Fit_Results/)
+list=(/home/u15/mmercer3/proj/habitat_analysis_class/Final/Model_Fit_Results/*Rda)
 
 date
 echo "Initiating script"
