@@ -52,6 +52,7 @@ individual_akde <- akde(individual, fits)
 
 # turn major roads into a raster with same properties as land cover data
 # Create a raster template
+extent <- ext(roads)
 distance <- rast(extent, 
                  resolution = nlcd_res, 
                  crs = nlcd_crs)
@@ -59,7 +60,6 @@ roads_vector <- vect(roads)
 roads_raster <- rasterize(roads_vector, distance, field = 1, background = 0)
 plot(roads_raster)
 distance <- terra::distance(nlcd_raster, roads_vector)
-# this spits out a raster of all 0s. Why???
 plot(distance)
 plot(roads_vector, add = TRUE)
 sum(table(values(distance))) 
