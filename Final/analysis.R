@@ -27,7 +27,8 @@ t(paste0("Data loaded at ", Sys.time()))
 # individual$identity <- individual_gps$individual.identifier
 # slot(individual, "info")$identity <- individual_gps$individual.identifier[1]
 # uere(individual) <- 7
-# name <- individual$identity[1]
+
+name <- individual$identity[1]
 
 # import land cover data
 nlcd_raster <- rast("Final/NLCD_raster.tif")
@@ -167,10 +168,12 @@ for(i in 1:length(buffers)){
   
 }
 
-write.csv(shrub_AICs, paste0("Final/Results/", "shrub_AICs.csv"))
-write.csv(low_AICs, paste0("Final/Results/", "low_AICs.csv"))
-write.csv(high_AICs, paste0("Final/Results/", "high_AICs.csv"))
-write.csv(roads_AICs, paste0("Final/Results/", "roads_AICs.csv"))
+write.csv(shrub_AICs, paste0("Final/Results/", name, "shrub_AICs.csv"))
+write.csv(low_AICs, paste0("Final/Results/", name, "low_AICs.csv"))
+write.csv(high_AICs, paste0("Final/Results/", name, "high_AICs.csv"))
+write.csv(roads_AICs, paste0("Final/Results/", name, "roads_AICs.csv"))
+
+
 
 # R <- vector("list")
 
