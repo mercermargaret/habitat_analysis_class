@@ -26,21 +26,21 @@ shrub_30 <- as(raster(shrub_30), "RasterLayer")
 roads_750 <- as(raster(roads_750), "RasterLayer")
 
 
-# ind_file <- commandArgs(trailingOnly = TRUE)
-# print(ind_file)
-# 
-# load(ind_file)
-# 
-# t(paste0("Data loaded at ", Sys.time()))
+ind_file <- commandArgs(trailingOnly = TRUE)
+print(ind_file)
 
-# test driving smaller subset of data
-load("Final/Model_Fit_Results/roads_30/Ben_rr.Rda")
-individual_gps <- read.csv("Final/Bobcat_Individuals/roads_30/ben.csv")
-individual_gps <- individual_gps[1:50,]
-individual <- as.telemetry(individual_gps)
-individual$identity <- individual_gps$individual.identifier
-slot(individual, "info")$identity <- individual_gps$individual.identifier[1]
-uere(individual) <- 7
+load(ind_file)
+
+t(paste0("Data loaded at ", Sys.time()))
+
+# # test driving smaller subset of data
+# load("Final/Model_Fit_Results/roads_30/Ben_rr.Rda")
+# individual_gps <- read.csv("Final/Bobcat_Individuals/roads_30/ben.csv")
+# individual_gps <- individual_gps[1:50,]
+# individual <- as.telemetry(individual_gps)
+# individual$identity <- individual_gps$individual.identifier
+# slot(individual, "info")$identity <- individual_gps$individual.identifier[1]
+# uere(individual) <- 7
 
 name <- individual$identity[1]
 individual_akde <- akde(individual, fits)
