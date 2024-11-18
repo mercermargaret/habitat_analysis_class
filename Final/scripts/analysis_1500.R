@@ -11,7 +11,7 @@ library(terra)
 
 
 # load data
-roads_scales_of_effect <- read.csv("Final/roads_scales_of_effect.csv")
+roads_scales_of_effect <- read.csv("Final/data/roads_scales_of_effect.csv")
 
 # load rasters in
 high_30 <- rast("Final/data/high_30.tif")
