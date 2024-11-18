@@ -45,9 +45,6 @@ t(paste0("Data loaded at ", Sys.time()))
 name <- individual$identity[1]
 individual_akde <- akde(individual, fits)
 
-# make rasters so rsf.fit likes them
-shrub_raster <- as(raster(shrub), "RasterLayer")
-
 # for most of the individuals for most of the variables, the scale of effect is 30
 # we'll use different scales of effect for each individual for roads though
 R <- list(shrub = shrub_30,
