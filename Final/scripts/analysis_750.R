@@ -51,9 +51,9 @@ R <- list(shrub = shrub_30,
           low = low_30,
           high = high_30,
           roads = roads_750)
-rsf <- rsf.fit(individual, individual_akde, R = R)
+rsf <- rsf.fit(individual, individual_akde, R = R, integrator = "Riemann", max.mem = "2 Gb")
 
-file_name = paste0("Final/Results/rsfs", name, "_rsf.Rda")
+file_name = paste0("Final/Results/rsfs/", name, "_rsf.Rda")
 
 save(rsf, file = file_name)
 
