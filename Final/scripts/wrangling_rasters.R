@@ -20,8 +20,21 @@ t(paste0("Roads loaded at ", Sys.time()))
 # Reproject the roads to match the tracking data
 roads <- st_transform(roads, crs(nlcd_crs))
 
+# see how land cover looks
+plot(nlcd_raster)
+# and see how much of our raster is a feature of choice
+foc_matrix <- matrix(c(11,21,22,23,24,31,41,42,43,52,71,82,90,95,
+                         0,1,1,1,1,0,0,0,0,1,1,0,0,0),
+                       ncol = 2)
+foc <- classify(nlcd_raster, foc_matrix)
+plot(foc)
+# get percent that is a feature of choice
+all_cells <- sum(table(values(foc)))
+foc_cells <- sum(values(foc) == 1)
+foc_cells/all_cells # 97% x_x
 
-# turn major roads into a raster with same properties as land cover data
+
+# turn foc# turn major roads into a raster with same properties as land cover data
 # Create a raster template
 extent <- ext(roads)
 distance <- rast(extent, 

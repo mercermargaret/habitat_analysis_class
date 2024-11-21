@@ -47,11 +47,11 @@ individual_akde <- akde(individual, fits)
 
 # for most of the individuals for most of the variables, the scale of effect is 30
 # we'll use different scales of effect for each individual for roads though
-R <- list(shrub = shrub_30,
+R <- list(# shrub = shrub_30,
           low = low_30,
           high = high_30,
           roads = roads_750)
-rsf <- rsf.fit(individual, individual_akde, R = R, integrator = "Riemann", max.mem = "2 Gb")
+rsf <- rsf.fit(individual, individual_akde, R = R, max.mem = "2 Gb")
 
 file_name = paste0("Final/Results/rsfs/", name, "_rsf.Rda")
 
