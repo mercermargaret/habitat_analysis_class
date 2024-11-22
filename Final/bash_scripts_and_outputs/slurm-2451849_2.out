@@ -1,0 +1,109 @@
+Wed Nov 20 20:09:46 MST 2024
+Initiating script
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ ggplot2::annotate() masks ctmm::annotate()
+✖ dplyr::filter()     masks stats::filter()
+✖ dplyr::lag()        masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Linking to GEOS 3.9.5, GDAL 3.8.5, PROJ 9.4.0; sf_use_s2() is TRUE
+Loading required package: sp
+
+Attaching package: ‘raster’
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+The following objects are masked from ‘package:ctmm’:
+
+    projection, projection<-
+
+terra 1.7.78
+
+Attaching package: ‘terra’
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+The following objects are masked from ‘package:ctmm’:
+
+    distance, meta
+
+[1] "/home/u15/mmercer3/proj/habitat_analysis_class/Final/Model_Fit_Results/roads_1500/Bunny_rr.Rda"
+     [,1]                                
+[1,] "Data loaded at 2024-11-20 20:09:56"
+Default grid size of 52.475 minutes chosen for bandwidth(...,fast=TRUE).
+Some rasters are not loaded in RAM and may be slow to process. See help("raster::readAll").
+Maximizing likelihood @ n=1×1310=1310
+ SD[log(ℓ)] = 5.06620722442968
+ Δlog(ℓ) = Inf
+ Δβ/SD[β] = 0.991878173534151 0.333461663319712 2.03239265048111 0.812998802443828 -0.0583021671810919 -1.27714894169284 -0.733932982912687 0.0232343246839406
+Maximizing likelihood @ n=2×1310=2620
+ SD[log(ℓ)] = 4.74122023575307
+ Δlog(ℓ) = 7.92875674662221
+ Δβ/SD[β] = 0.100918694717526 0.0462736441552836 0.517030835126841 0.448863722340899 -0.103764978941841 -0.173516105098525 0.269409110378739 -0.314556925828825
+Maximizing likelihood @ n=4×1310=5240
+ SD[log(ℓ)] = 3.8773911449926
+ Δlog(ℓ) = 9.49991887495886
+ Δβ/SD[β] = 0.0386081454050279 0.0194573985539316 0.0646966816049645 0.0588542752975356 -0.0177590599662252 -0.0912540528082235 0.0792141314469808 -0.0495300018139731
+Maximizing likelihood @ n=8×1310=10480
+ SD[log(ℓ)] = 2.93578695165697
+ Δlog(ℓ) = -0.795286315098295
+ Δβ/SD[β] = 0 0 0 0 0 0 0 0
+Maximizing likelihood @ n=16×1310=20960
+ SD[log(ℓ)] = 2.47630825414834
+ Δlog(ℓ) = 3.33397104480372
+ Δβ/SD[β] = 0.0612383339080695 -0.0108125429043024 0.178068223351039 0.173862567939992 -0.134652851004387 0.0629319372624749 0.294547037085457 -0.149351279598677
+Maximizing likelihood @ n=32×1310=41920
+ SD[log(ℓ)] = 1.81872022166548
+ Δlog(ℓ) = -0.262469150162218
+ Δβ/SD[β] = 0.00991192540987091 -0.00631547449783581 0.0130323323622789 0.0034328997598314 -0.00116640335727804 -0.0455469443629905 -0.0242800389619188 0.0156501064061866
+Maximizing likelihood @ n=64×1310=83840
+ SD[log(ℓ)] = 1.4516003563267
+ Δlog(ℓ) = -0.823992980151658
+ Δβ/SD[β] = -0.00598525409645644 0.0485938928922884 0.113337526990774 0.272038200740212 -0.120368337358967 0.0795478745930042 -0.0275698966452162 0.00293301255638559
+Maximizing likelihood @ n=128×1310=167680
+ SD[log(ℓ)] = 1.10314007810374
+ Δlog(ℓ) = 0.13475817929546
+ Δβ/SD[β] = 0.02040819460743 0.00592805123258316 0.0223548476480954 0.0298018870310877 -0.0322019689185049 -0.0191186249027921 0.0175853604578058 0.000529850615955264
+Maximizing likelihood @ n=256×1310=335360
+ SD[log(ℓ)] = 0.9066965795926
+ Δlog(ℓ) = -0.598337211583257
+ Δβ/SD[β] = 0.0134094931101449 -0.00611644222499744 0.00594168685130199 -0.000355648624255935 -0.00136817998334628 0.00619397301484172 -0.00158461573928482 -0.00831244389481631
+Maximizing likelihood @ n=512×1310=670720
+ SD[log(ℓ)] = 0.594606292530334
+ Δlog(ℓ) = 1.25647922104731
+ Δβ/SD[β] = 0.0229047676000627 -0.0117393601421143 0.0433293341138801 0.0737737916613607 -0.0627677580577987 -0.0184497865434151 0.00458563226764125 0.0225228503353974
+Maximizing likelihood @ n=1024×1310=1341440
+ SD[log(ℓ)] = 0.490533020223331
+ Δlog(ℓ) = -0.137737037215587
+ Δβ/SD[β] = -0.00145730049750896 -0.00195912387212236 0.000262383651025537 0.00398169514211676 -0.00146632085625523 0.00514081205690704 -0.00449483220217087 -0.00531300980557882
+Maximizing likelihood @ n=2048×1310=2682880
+ SD[log(ℓ)] = 0.408083429019437
+ Δlog(ℓ) = -0.563881964516966
+ Δβ/SD[β] = 0 0 0 0 0 0 0 0
+Maximizing likelihood @ n=4096×1310=5365760
+ SD[log(ℓ)] = 0.277252275119056
+ Δlog(ℓ) = 0.141548627189508
+ Δβ/SD[β] = 0 0 0 0 0 0 0 0
+Maximizing likelihood @ n=8192×1310=10731520
+ SD[log(ℓ)] = 0.206232628240777
+ Δlog(ℓ) = 0.0347083029976716
+ Δβ/SD[β] = 0 0 0 0 0 0 0 0
+Maximizing likelihood @ n=16384×1310=21463040
+ SD[log(ℓ)] = 0.161208561059629
+ Δlog(ℓ) = 0.134900751637076
+ Δβ/SD[β] = 0 0 0 0 0 0 0 0
+Calculating Hessian
+Warning message:
+In rsf.fit(individual, individual_akde, R = R, max.mem = "2 Gb") :
+  Calculation stopped before 2.6 Gb allocation.
+Script complete
+Wed Nov 20 20:59:29 MST 2024
