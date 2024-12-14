@@ -9,6 +9,7 @@ library(sf)
 library(raster)
 library(terra)
 
+all_bobs <- read.csv("../bobcat_chapter/data/bobcat_locs_all.csv")
 
 # import land cover data
 nlcd_raster <- rast("Final/data/NLCD_raster.tif")
@@ -69,11 +70,29 @@ high_matrix <- matrix(c(11,21,22,23,24,31,41,42,43,52,71,82,90,95,
 high <- classify(nlcd_raster, high_matrix)
 plot(high)
 
-# make rasters
+
+
+# make rasters into correct format
 shrub_raster <- as(raster(shrub), "RasterLayer")
 low_raster <- as(raster(low), "RasterLayer")
 high_raster <- as(raster(high), "RasterLayer")
 distance_raster <- as(raster(distance), "RasterLayer")
+
+locs <- all_bobs[4:5]
+locs$Longitude <- all_bobs$location.long
+locs$Latitude <- all_bobs$location.lat
+locs <- locs[3:4]
+
+# make this into a spatial object and reproject into same crs as the raster then this'll work:
+
+# what percentage of the bobcat locations are in shrub?
+shrub_locs <- terra::extract(shrub_raster, locs, raw = FALSE)
+shrub_locs
+# we want our reference category to be a relatively large proportion of the points (at least 25%); 
+# want it to be relatively neutral so that everything else is compared to it
+
+# ok so we're trying to see if there are about as many points as we expect for how much of the home range is in that category
+# trim it down to the study area only!
 
 # create buffers
 # choose different scales (code from Javan)
